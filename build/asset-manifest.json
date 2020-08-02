@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/climategamefin/static/css/main.915e8010.chunk.css",
+    "main.js": "/climategamefin/static/js/main.7acfbdef.chunk.js",
+    "main.js.map": "/climategamefin/static/js/main.7acfbdef.chunk.js.map",
+    "runtime-main.js": "/climategamefin/static/js/runtime-main.9c8b6bc8.js",
+    "runtime-main.js.map": "/climategamefin/static/js/runtime-main.9c8b6bc8.js.map",
+    "static/js/2.89e2d59c.chunk.js": "/climategamefin/static/js/2.89e2d59c.chunk.js",
+    "static/js/2.89e2d59c.chunk.js.map": "/climategamefin/static/js/2.89e2d59c.chunk.js.map",
+    "index.html": "/climategamefin/index.html",
+    "precache-manifest.d9dce35ac1656016700a1086db9c6e0d.js": "/climategamefin/precache-manifest.d9dce35ac1656016700a1086db9c6e0d.js",
+    "service-worker.js": "/climategamefin/service-worker.js",
+    "static/css/main.915e8010.chunk.css.map": "/climategamefin/static/css/main.915e8010.chunk.css.map",
+    "static/js/2.89e2d59c.chunk.js.LICENSE.txt": "/climategamefin/static/js/2.89e2d59c.chunk.js.LICENSE.txt",
+    "static/media/fire.png": "/climategamefin/static/media/fire.c1d6c596.png",
+    "static/media/ice.png": "/climategamefin/static/media/ice.d9fa99cb.png",
+    "static/media/land.png": "/climategamefin/static/media/land.aba1ca74.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9c8b6bc8.js",
+    "static/js/2.89e2d59c.chunk.js",
+    "static/css/main.915e8010.chunk.css",
+    "static/js/main.7acfbdef.chunk.js"
+  ]
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- PubNub javascript SDK-->
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.27.4.min.js"></script>
+
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Climate Pong</title>
+  </head>
+  <body>
+    <center>
+    <h1> Climate Pong by Ryan Hope </h1>
+  </center>
+<center>
+  <p5> Controls: Player 1 use W & S keys to move paddle -
+              Player 2 use UP Arrow and DOWN Arrow to move paddle
+
+            </p5> </center>
+    <div id="root"></div>
+    <script type="text/javascript">
+      let pubnub = new PubNub({
+        subscribeKey: "sub-c-69318736-d4c8-11ea-b3f2-c27cb65b13f4",
+        publishKey: "pub-c-1adb2712-53fb-4457-ac95-8c93f01dc844",
+      });
+
+      function publishMessage(message) {
+        pubnub.publish(
+          {
+            message: message,
+            channel: "ioe_channel2", // make sure your channel matches this name in your debug console and your web interface code
+            sendByPost: false, // true to send via post
+            storeInHistory: true, //override default storage options
+          },
+          function (status, response) {
+            if (status.error) {
+              // handle error
+              console.log(status);
+            } else {
+              // if we get a response that is not an error
+              console.log(
+                "message Published w/ timetoken",
+                response.timetoken
+              );
+            }
+          }
+        );
+      }
+      let rectLscoreP = 0; //left paddle score
+      let rectRscoreP = 0; // right paddle score
+
+      function score() { //function called for scoring of the players
+        if (window.rectLscore) {
+          if (rectLscoreP != window.rectLscore) { // != meaning not equal to, returns true if the operands do not have the same value, otherwise it returns false.
+            publishMessage({ player1: window.rectLscore }); //publishes score to the game for player 1
+          }
+          rectLscoreP = window.rectLscore;
+        }
+
+        if (window.rectRscore) {
+          if (rectRscoreP != window.rectRscore) {
+            publishMessage({ player2: window.rectRscore }); //publishes score to the game for player 2 
+          }
+          rectRscoreP = window.rectRscore;
+        }
+      }
+      setInterval(score, 10); //first parameter is the function to be executed, second parameter is the time interval between the executions 
+    </script>
+  </body>
+</html>
